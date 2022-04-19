@@ -21,7 +21,7 @@ def sendstory(request):
         }
         value = {
             "auth": auth,
-            "media": medias
+            "medias": medias
         }
         value  = json.dumps(value)
         hdr ={"task":"sendstory"}

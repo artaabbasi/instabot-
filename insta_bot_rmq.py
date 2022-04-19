@@ -429,7 +429,7 @@ def sendstory(body):
 def sendpost(body):
     data = json.loads(body)
 
-    path = f"/story"
+    path = f"post"
 
     try:
         username=data['auth']['username']
@@ -440,6 +440,7 @@ def sendpost(body):
     try:
         name = str(data["media"])
         jpg_to_ = path + "/" + name + ".jpg"
+        print(jpg_to_)
         try:
             with open(jpg_to_, "r") as f:
                 print("founded!")
