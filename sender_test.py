@@ -13,21 +13,9 @@ body = {
         "password":"avangp23",
 
     },
-    "users":['cristiano'],
-    "like":{
-        "enabled": True,
-        "percentage":100
-    },
-    "intract":{
-        "amount":10,
-        "percentage":100,
-        "randomize": True
-    },
-    "follow":{
-        "enabled": True,
-        "percentage":100
-    },
+    "media":9
+
 }
-channel.basic_publish(exchange='', routing_key='insta', body=json.dumps(body), properties=pika.BasicProperties(headers={"message":"interact_user_following"}))
+channel.basic_publish(exchange='', routing_key='insta', body=json.dumps(body), properties=pika.BasicProperties(headers={"message":"sendstory"}))
 
 connection.close()
