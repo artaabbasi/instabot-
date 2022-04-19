@@ -1,5 +1,7 @@
 import json
 import os
+import random
+import time
 import pika
 from instapy import InstaPy , smart_run
 
@@ -408,15 +410,17 @@ def sendstory(body):
         print("Should send auth!")
         return None
     try:
-        name = str(data["media"])
-        jpg_to_ = path + "/" + name + ".jpg"
-        print(jpg_to_)
-        try:
-            with open(jpg_to_, "r") as f:
-                print("founded!")
-                os.system(f'java -jar MadtalkRobot.jar {username} {password} {jpg_to_}')
-        except:
-            print("not found!")
+        for media in data["medias"]:
+            name = str(media)
+            jpg_to_ = path + "/" + name + ".jpg"
+            print(jpg_to_)
+            try:
+                with open(jpg_to_, "r") as f:
+                    print("founded!")
+                    os.system(f'java -jar MadtalkRobot.jar {username} {password} {jpg_to_}')
+                    time.sleep(random.randint(5,20))
+            except:
+                print("not found!")
     except:
         print("Should send media!")
     return None
@@ -479,7 +483,7 @@ channel = connection.channel()
 channel.queue_declare(queue='insta')
 
 def callback(ch, method, properties, body):
-    task = properties.headers.get("message")
+    task = properties.headers.get("task")
     exec(f"{task}(body)")
 
 channel.basic_consume(queue='insta', on_message_callback=callback, auto_ack=True)
