@@ -290,7 +290,7 @@ def interact_by_comments(request):
     channel = connection.channel()
     channel.queue_declare(queue='insta')
     accounts = models.InstagramAccounts.objects.filter(pk__in=data.get('accounts'))
-    if data.get('follow_setup', None) is None or data.get('like_setup', None) is None:
+    if data.get('follow_setup', None) is None and data.get('like_setup', None) is None:
         return response.Response({"messages":"you should send one of like or follow"})
     main_setup = {'main':data.get('main_setup', None)}
     interact_setup = {'intract':data.get('interact_setup', None)}
