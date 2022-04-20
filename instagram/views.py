@@ -298,6 +298,7 @@ def interact_by_comments(request):
     comment_replies_setup = {'comment_replies':data.get('comment_replies_setup', None)}
     follow_setup = {'follow':data.get('follow_setup', None)}
     like_setup = {'like':data.get('like_setup', None)}
+    users = data.get('users', None)
 
     for account in accounts:
         auth = {
@@ -305,6 +306,7 @@ def interact_by_comments(request):
             "password": account.password,
         }
         value = {
+            "users":users,
             "auth": auth,
         }
         value.update(interact_setup)
