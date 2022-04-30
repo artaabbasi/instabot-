@@ -43,7 +43,7 @@ var/
 wheels/
 story/*
 post/*
-
+geckodriver.log
 pip-wheel-metadata/
 share/python-wheels/
 *.egg-info/

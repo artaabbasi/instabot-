@@ -170,59 +170,60 @@ def check_browser(browser, logfolder, logger, proxy_address):
     )
 
     # check connection status
-    try:
-        logger.info("-- Connection Checklist [1/2] (Internet Connection Status)")
-        browser.get("view-source:https://freegeoip.app/json")
-        pre = browser.find_element(By.TAG_NAME, "pre").text
-        current_ip_info = json.loads(pre)
-        if (
-            proxy_address is not None
-            and socket.gethostbyname(proxy_address) != current_ip_info["ip"]
-        ):
-            logger.warning("- Proxy is set, but it's not working properly")
-            logger.warning(
-                '- Expected Proxy IP is "{}", and the current IP is "{}"'.format(
-                    proxy_address, current_ip_info["ip"]
-                )
-            )
-            logger.warning("- Try again or disable the Proxy Address on your setup")
-            logger.warning("- Aborting connection...")
-            return False
-        else:
-            logger.info("- Internet Connection Status: ok")
-            logger.info(
-                '- Current IP is "{}" and it\'s from "{}/{}"'.format(
-                    current_ip_info["ip"],
-                    current_ip_info["country_name"],
-                    current_ip_info["country_code"],
-                )
-            )
-            update_activity(
-                browser,
-                action=None,
-                state="Internet connection is ok",
-                logfolder=logfolder,
-                logger=logger,
-            )
-    except Exception:
-        logger.warning("- Internet Connection Status: error")
-        update_activity(
-            browser,
-            action=None,
-            state="There is an issue with the internet connection",
-            logfolder=logfolder,
-            logger=logger,
-        )
-        return False
+    # try:
+    #     logger.info("-- Connection Checklist [1/2] (Internet Connection Status)")
+    #     print("*"*90)
+    #     browser.get("view-source:https://freegeoip.app/json")
+    #     pre = browser.find_element(By.TAG_NAME, "pre").text
+    #     current_ip_info = json.loads(pre)
+    #     if (
+    #         proxy_address is not None
+    #         and socket.gethostbyname(proxy_address) != current_ip_info["ip"]
+    #     ):
+    #         logger.warning("- Proxy is set, but it's not working properly")
+    #         logger.warning(
+    #             '- Expected Proxy IP is "{}", and the current IP is "{}"'.format(
+    #                 proxy_address, current_ip_info["ip"]
+    #             )
+    #         )
+    #         logger.warning("- Try again or disable the Proxy Address on your setup")
+    #         logger.warning("- Aborting connection...")
+    #         return False
+    #     else:
+    #         logger.info("- Internet Connection Status: ok")
+    #         logger.info(
+    #             '- Current IP is "{}" and it\'s from "{}/{}"'.format(
+    #                 current_ip_info["ip"],
+    #                 current_ip_info["country_name"],
+    #                 current_ip_info["country_code"],
+    #             )
+    #         )
+    #         update_activity(
+    #             browser,
+    #             action=None,
+    #             state="Internet connection is ok",
+    #             logfolder=logfolder,
+    #             logger=logger,
+    #         )
+    # except Exception:
+    #     logger.warning("- Internet Connection Status: error")
+    #     update_activity(
+    #         browser,
+    #         action=None,
+    #         state="There is an issue with the internet connection",
+    #         logfolder=logfolder,
+    #         logger=logger,
+    #     )
+    #     return False
 
-    # check if hide-selenium extension is running
-    logger.info("-- Connection Checklist [2/2] (Hide Selenium Extension)")
-    webdriver = browser.execute_script("return window.navigator.webdriver")
-    logger.info("- window.navigator.webdriver response: {}".format(webdriver))
-    if webdriver:
-        logger.warning("- Hide Selenium Extension: error")
-    else:
-        logger.info("- Hide Selenium Extension: ok")
+    # # check if hide-selenium extension is running
+    # logger.info("-- Connection Checklist [2/2] (Hide Selenium Extension)")
+    # webdriver = browser.execute_script("return window.navigator.webdriver")
+    # logger.info("- window.navigator.webdriver response: {}".format(webdriver))
+    # if webdriver:
+    #     logger.warning("- Hide Selenium Extension: error")
+    # else:
+    #     logger.info("- Hide Selenium Extension: ok")
 
     # everything is ok, then continue(True)
     return True
