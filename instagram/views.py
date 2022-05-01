@@ -151,6 +151,7 @@ def interact_user_following(request):
     comment_replies_setup = {'comment_replies':data.get('comment_replies_setup', None)}
     follow_setup = {'follow':data.get('follow_setup', None)}
     like_setup = {'like':data.get('like_setup', None)}
+    users = data.get('users', None)
 
     for account in accounts:
         auth = {
@@ -158,6 +159,8 @@ def interact_user_following(request):
             "password": account.password,
         }
         value = {
+            "users":users,
+
             "auth": auth,
         }
         value.update(interact_setup)
@@ -191,6 +194,7 @@ def interact_user_likers(request):
     comment_replies_setup = {'comment_replies':data.get('comment_replies_setup', None)}
     follow_setup = {'follow':data.get('follow_setup', None)}
     like_setup = {'like':data.get('like_setup', None)}
+    users = data.get('users', None)
 
     for account in accounts:
         auth = {
@@ -198,6 +202,8 @@ def interact_user_likers(request):
             "password": account.password,
         }
         value = {
+            "users":users,
+
             "auth": auth,
         }
         value.update(interact_setup)
@@ -231,6 +237,7 @@ def interact_user_followers(request):
     comment_replies_setup = {'comment_replies':data.get('comment_replies_setup', None)}
     follow_setup = {'follow':data.get('follow_setup', None)}
     like_setup = {'like':data.get('like_setup', None)}
+    users = data.get('users', None)
 
     for account in accounts:
         auth = {
@@ -238,6 +245,7 @@ def interact_user_followers(request):
             "password": account.password,
         }
         value = {
+            "users":users,
             "auth": auth,
         }
         value.update(interact_setup)
