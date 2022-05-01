@@ -96,6 +96,14 @@ class MainLikeByLocations(serializers.Serializer):
 class LikeByLocations(BaseSerialaizer):
     main_setup = MainLikeByLocations()
 
+class MainLikeByFeed(serializers.Serializer):
+    amount = serializers.IntegerField()
+    unfollow = serializers.BooleanField()
+    randomize = serializers.BooleanField()
+    interact = serializers.BooleanField()
+
+class LikeByFeed(BaseSerialaizer):
+    main_setup = MainLikeByFeed()
 class SendPostSerializer(serializers.Serializer):
     accounts = serializers.ListField()
     media = serializers.CharField()

@@ -17,4 +17,4 @@ with  smart_run(session):
     session.set_comment_replies(["راس میگیا", "پخ یییمه"])
     session.set_do_reply_to_comments(enabled=True, percentage=10)
     # session.interact_user_following(['udemy'], amount=2, randomize=True)
-    session.intract_by_comments(['cristiano'], randomize=True,)
+    session.like_by_feed(amount=10, randomize=True, unfollow=False, interact=True)
