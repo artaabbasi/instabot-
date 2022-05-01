@@ -68,7 +68,7 @@ def like_by_locations(request):
     channel.queue_declare(queue='insta')
     accounts = models.InstagramAccounts.objects.filter(pk__in=data.get('accounts'))
     main_setup = {'main':data.get('main_setup', None)}
-    interact_setup = {'intract':data.get('interact_setup', None)}
+    interact_setup = {'interact':data.get('interact_setup', None)}
     comment_setup = {'comment':data.get('comment_setup', None)}
     comment_replies_setup = {'comment_replies':data.get('comment_replies_setup', None)}
     follow_setup = {'follow':data.get('follow_setup', None)}
@@ -105,7 +105,7 @@ def like_by_tags(request):
     channel.queue_declare(queue='insta')
     accounts = models.InstagramAccounts.objects.filter(pk__in=data.get('accounts'))
     main_setup = {'main':data.get('main_setup', None)}
-    interact_setup = {'intract':data.get('interact_setup', None)}
+    interact_setup = {'interact':data.get('interact_setup', None)}
     comment_setup = {'comment':data.get('comment_setup', None)}
     comment_replies_setup = {'comment_replies':data.get('comment_replies_setup', None)}
     follow_setup = {'follow':data.get('follow_setup', None)}
@@ -146,7 +146,7 @@ def interact_user_following(request):
     if data.get('follow_setup', None) is None or data.get('like_setup', None) is None:
         return response.Response({"messages":"you should send one of like or follow"})
     main_setup = {'main':data.get('main_setup', None)}
-    interact_setup = {'intract':data.get('interact_setup', None)}
+    interact_setup = {'interact':data.get('interact_setup', None)}
     comment_setup = {'comment':data.get('comment_setup', None)}
     comment_replies_setup = {'comment_replies':data.get('comment_replies_setup', None)}
     follow_setup = {'follow':data.get('follow_setup', None)}
@@ -189,7 +189,7 @@ def interact_user_likers(request):
     if data.get('follow_setup', None) is None or data.get('like_setup', None) is None:
         return response.Response({"messages":"you should send one of like or follow"})
     main_setup = {'main':data.get('main_setup', None)}
-    interact_setup = {'intract':data.get('interact_setup', None)}
+    interact_setup = {'interact':data.get('interact_setup', None)}
     comment_setup = {'comment':data.get('comment_setup', None)}
     comment_replies_setup = {'comment_replies':data.get('comment_replies_setup', None)}
     follow_setup = {'follow':data.get('follow_setup', None)}
@@ -232,7 +232,7 @@ def interact_user_followers(request):
     if data.get('follow_setup', None) is None or data.get('like_setup', None) is None:
         return response.Response({"messages":"you should send one of like or follow"})
     main_setup = {'main':data.get('main_setup', None)}
-    interact_setup = {'intract':data.get('interact_setup', None)}
+    interact_setup = {'interact':data.get('interact_setup', None)}
     comment_setup = {'comment':data.get('comment_setup', None)}
     comment_replies_setup = {'comment_replies':data.get('comment_replies_setup', None)}
     follow_setup = {'follow':data.get('follow_setup', None)}
@@ -274,7 +274,7 @@ def interact_by_comments(request):
     if data.get('follow_setup', None) is None and data.get('like_setup', None) is None:
         return response.Response({"messages":"you should send one of like or follow"})
     main_setup = {'main':data.get('main_setup', None)}
-    interact_setup = {'intract':data.get('interact_setup', None)}
+    interact_setup = {'interact':data.get('interact_setup', None)}
     comment_setup = {'comment':data.get('comment_setup', None)}
     comment_replies_setup = {'comment_replies':data.get('comment_replies_setup', None)}
     follow_setup = {'follow':data.get('follow_setup', None)}
@@ -315,7 +315,7 @@ def like_by_feed(request):
     if data.get('follow_setup', None) is None and data.get('like_setup', None) is None:
         return response.Response({"messages":"you should send one of like or follow"})
     main_setup = {'main':data.get('main_setup', None)}
-    interact_setup = {'intract':data.get('interact_setup', None)}
+    interact_setup = {'interact':data.get('interact_setup', None)}
     comment_setup = {'comment':data.get('comment_setup', None)}
     comment_replies_setup = {'comment_replies':data.get('comment_replies_setup', None)}
     follow_setup = {'follow':data.get('follow_setup', None)}

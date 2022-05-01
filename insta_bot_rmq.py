@@ -16,7 +16,7 @@ def interact_by_comments(body):
         print("Should send users!")
         return None
     main_setup = data.get('main', None)
-    intract_setup = data.get('intract', None)
+    interact_setup = data.get('interact', None)
     comment_setup = data.get('comment', None)
     comment_replies_setup = data.get('comment_replies', None)
     follow_setup = data.get('follow', None)
@@ -30,10 +30,10 @@ def interact_by_comments(body):
         return None
     with  smart_run(session):
         session.set_user_interact(
-            amount= intract_setup.get('amount') if intract_setup.get('amount',None) is not None else 10,
-            randomize= intract_setup.get('randomize') if intract_setup.get('randomize',None) is not None else True, 
-            percentage= intract_setup.get('percentage') if intract_setup.get('percentage',None) is not None else 100,
-            ) if intract_setup is not None else None
+            amount= interact_setup.get('amount') if interact_setup.get('amount',None) is not None else 10,
+            randomize= interact_setup.get('randomize') if interact_setup.get('randomize',None) is not None else True, 
+            percentage= interact_setup.get('percentage') if interact_setup.get('percentage',None) is not None else 100,
+            ) if interact_setup is not None else None
 
         session.set_do_follow(
             enabled= follow_setup.get('enabled') if follow_setup.get('enabled',None) is not None else False,
@@ -84,7 +84,7 @@ def interact_user_followers(body):
         print("Should send users!")
         return None
     main_setup = data.get('main', None)
-    intract_setup = data.get('intract', None)
+    interact_setup = data.get('interact', None)
     comment_setup = data.get('comment', None)
     comment_replies_setup = data.get('comment_replies', None)
     follow_setup = data.get('follow', None)
@@ -97,10 +97,10 @@ def interact_user_followers(body):
         return None
     with  smart_run(session):
         session.set_user_interact(
-            amount= intract_setup.get('amount') if intract_setup.get('amount',None) is not None else 10,
-            randomize= intract_setup.get('randomize') if intract_setup.get('randomize',None) is not None else True, 
-            percentage= intract_setup.get('percentage') if intract_setup.get('percentage',None) is not None else 100,
-            ) if intract_setup is not None else None
+            amount= interact_setup.get('amount') if interact_setup.get('amount',None) is not None else 10,
+            randomize= interact_setup.get('randomize') if interact_setup.get('randomize',None) is not None else True, 
+            percentage= interact_setup.get('percentage') if interact_setup.get('percentage',None) is not None else 100,
+            ) if interact_setup is not None else None
 
         session.set_do_follow(
             enabled= follow_setup.get('enabled') if follow_setup.get('enabled',None) is not None else False,
@@ -149,7 +149,7 @@ def interact_user_likers(body):
         print("Should send users!")
         return None
     main_setup = data.get('main', None)
-    intract_setup = data.get('intract', None)
+    interact_setup = data.get('interact', None)
     comment_setup = data.get('comment', None)
     comment_replies_setup = data.get('comment_replies', None)
     follow_setup = data.get('follow', None)
@@ -162,10 +162,10 @@ def interact_user_likers(body):
         return None
     with  smart_run(session):
         session.set_user_interact(
-            amount= intract_setup.get('amount') if intract_setup.get('amount',None) is not None else 10,
-            randomize= intract_setup.get('randomize') if intract_setup.get('randomize',None) is not None else True, 
-            percentage= intract_setup.get('percentage') if intract_setup.get('percentage',None) is not None else 100,
-            ) if intract_setup is not None else None
+            amount= interact_setup.get('amount') if interact_setup.get('amount',None) is not None else 10,
+            randomize= interact_setup.get('randomize') if interact_setup.get('randomize',None) is not None else True, 
+            percentage= interact_setup.get('percentage') if interact_setup.get('percentage',None) is not None else 100,
+            ) if interact_setup is not None else None
 
         session.set_do_follow(
             enabled= follow_setup.get('enabled') if follow_setup.get('enabled',None) is not None else False,
@@ -214,7 +214,7 @@ def interact_user_following(body):
         print("Should send users!")
         return None
     main_setup = data.get('main', None)
-    intract_setup = data.get('intract', None)
+    interact_setup = data.get('interact', None)
     comment_setup = data.get('comment', None)
     comment_replies_setup = data.get('comment_replies', None)
     follow_setup = data.get('follow', None)
@@ -227,10 +227,10 @@ def interact_user_following(body):
         return None
     with  smart_run(session):
         session.set_user_interact(
-            amount= intract_setup.get('amount') if intract_setup.get('amount',None) is not None else 10,
-            randomize= intract_setup.get('randomize') if intract_setup.get('randomize',None) is not None else True, 
-            percentage= intract_setup.get('percentage') if intract_setup.get('percentage',None) is not None else 100,
-            ) if intract_setup is not None else None
+            amount= interact_setup.get('amount') if interact_setup.get('amount',None) is not None else 10,
+            randomize= interact_setup.get('randomize') if interact_setup.get('randomize',None) is not None else True, 
+            percentage= interact_setup.get('percentage') if interact_setup.get('percentage',None) is not None else 100,
+            ) if interact_setup is not None else None
 
         session.set_do_follow(
             enabled= follow_setup.get('enabled') if follow_setup.get('enabled',None) is not None else False,
@@ -274,7 +274,7 @@ def like_by_tags(body):
 
 
     main_setup = data.get('main', None)
-    intract_setup = data.get('intract', None)
+    interact_setup = data.get('interact', None)
     comment_setup = data.get('comment', None)
     comment_replies_setup = data.get('comment_replies', None)
     follow_setup = data.get('follow', None)
@@ -288,10 +288,10 @@ def like_by_tags(body):
         return None
     with  smart_run(session):
         session.set_user_interact(
-            amount= intract_setup.get('amount') if intract_setup.get('amount',None) is not None else 10,
-            randomize= intract_setup.get('randomize') if intract_setup.get('randomize',None) is not None else True, 
-            percentage= intract_setup.get('percentage') if intract_setup.get('percentage',None) is not None else 100,
-            ) if intract_setup is not None else None
+            amount= interact_setup.get('amount') if interact_setup.get('amount',None) is not None else 10,
+            randomize= interact_setup.get('randomize') if interact_setup.get('randomize',None) is not None else True, 
+            percentage= interact_setup.get('percentage') if interact_setup.get('percentage',None) is not None else 100,
+            ) if interact_setup is not None else None
 
         session.set_do_follow(
             enabled= follow_setup.get('enabled') if follow_setup.get('enabled',None) is not None else False,
@@ -340,7 +340,7 @@ def like_by_locations(body):
 
 
     main_setup = data.get('main', None)
-    intract_setup = data.get('intract', None)
+    interact_setup = data.get('interact', None)
     comment_setup = data.get('comment', None)
     comment_replies_setup = data.get('comment_replies', None)
     follow_setup = data.get('follow', None)
@@ -354,10 +354,10 @@ def like_by_locations(body):
         return None
     with  smart_run(session):
         session.set_user_interact(
-            amount= intract_setup.get('amount') if intract_setup.get('amount',None) is not None else 10,
-            randomize= intract_setup.get('randomize') if intract_setup.get('randomize',None) is not None else True, 
-            percentage= intract_setup.get('percentage') if intract_setup.get('percentage',None) is not None else 100,
-            ) if intract_setup is not None else None
+            amount= interact_setup.get('amount') if interact_setup.get('amount',None) is not None else 10,
+            randomize= interact_setup.get('randomize') if interact_setup.get('randomize',None) is not None else True, 
+            percentage= interact_setup.get('percentage') if interact_setup.get('percentage',None) is not None else 100,
+            ) if interact_setup is not None else None
 
         session.set_do_follow(
             enabled= follow_setup.get('enabled') if follow_setup.get('enabled',None) is not None else False,
@@ -401,7 +401,7 @@ def like_by_feed(body):
 
 
     main_setup = data.get('main', None)
-    intract_setup = data.get('intract', None)
+    interact_setup = data.get('interact', None)
     comment_setup = data.get('comment', None)
     comment_replies_setup = data.get('comment_replies', None)
     follow_setup = data.get('follow', None)
@@ -415,10 +415,10 @@ def like_by_feed(body):
         return None
     with  smart_run(session):
         session.set_user_interact(
-            amount= intract_setup.get('amount') if intract_setup.get('amount',None) is not None else 10,
-            randomize= intract_setup.get('randomize') if intract_setup.get('randomize',None) is not None else True, 
-            percentage= intract_setup.get('percentage') if intract_setup.get('percentage',None) is not None else 100,
-            ) if intract_setup is not None else None
+            amount= interact_setup.get('amount') if interact_setup.get('amount',None) is not None else 10,
+            randomize= interact_setup.get('randomize') if interact_setup.get('randomize',None) is not None else True, 
+            percentage= interact_setup.get('percentage') if interact_setup.get('percentage',None) is not None else 100,
+            ) if interact_setup is not None else None
 
         session.set_do_follow(
             enabled= follow_setup.get('enabled') if follow_setup.get('enabled',None) is not None else False,
