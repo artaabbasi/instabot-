@@ -47,6 +47,13 @@ class InteractByComments(BaseSerialaizer):
     users = serializers.ListField()
     main_setup = MainInteractByComments()
 
+class MainInteractByUsers(serializers.Serializer):
+    randomize = serializers.BooleanField()
+    amount = serializers.IntegerField()
+
+class InteractByUsers(BaseSerialaizer):
+    users = serializers.ListField()
+    main_setup = MainInteractByUsers()
 class MainInteractByFollowers(serializers.Serializer):
     randomize = serializers.BooleanField()
     amount = serializers.IntegerField()

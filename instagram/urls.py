@@ -10,6 +10,7 @@ urlpatterns = [
     path('interact_user_followers/', interact_user_followers),
     path('interact_user_following/', interact_user_following),
     path('interact_by_comments/', interact_by_comments),
+    path('interact_by_users/', interact_by_users),
     path('like_by_feed/', like_by_feed),
 
 ]

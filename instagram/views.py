@@ -302,6 +302,45 @@ def interact_by_comments(request):
     connection.close()
     return response.Response({"messages":"done.."})
 
+@swagger_auto_schema(methods = ['post',],tags=['instagram'], request_body=serialaizers.InteractByUsers)
+@decorators.api_view(['POST'])
+def interact_by_users(request):
+    data = request.data
+    connection = pika.BlockingConnection(
+    pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.queue_declare(queue='insta')
+    accounts = models.InstagramAccounts.objects.filter(pk__in=data.get('accounts'))
+    if data.get('follow_setup', None) is None and data.get('like_setup', None) is None:
+        return response.Response({"messages":"you should send one of like or follow"})
+    main_setup = {'main':data.get('main_setup', None)}
+    interact_setup = {'interact':data.get('interact_setup', None)}
+    comment_setup = {'comment':data.get('comment_setup', None)}
+    comment_replies_setup = {'comment_replies':data.get('comment_replies_setup', None)}
+    follow_setup = {'follow':data.get('follow_setup', None)}
+    like_setup = {'like':data.get('like_setup', None)}
+    users = data.get('users', None)
+
+    for account in accounts:
+        auth = {
+            "username": account.username,
+            "password": account.password,
+        }
+        value = {
+            "users":users,
+            "auth": auth,
+        }
+        value.update(interact_setup)
+        value.update(comment_setup)
+        value.update(comment_replies_setup)
+        value.update(follow_setup)
+        value.update(like_setup)
+        value.update(main_setup)
+        value  = json.dumps(value)
+        hdr ={"task":"interact_by_users"}
+        channel.basic_publish(exchange='', routing_key='insta', body=value, properties=pika.BasicProperties(headers=hdr))
+    connection.close()
+    return response.Response({"messages":"done.."})
 
 @swagger_auto_schema(methods = ['post',],tags=['instagram'], request_body=serialaizers.LikeByFeed)
 @decorators.api_view(['POST'])

@@ -269,6 +269,69 @@ def interact_user_following(body):
             )
 
 
+def interact_by_users(body):
+    data = json.loads(body)
+
+    try:
+        users = data['users']
+    except:
+        print("Should send users!")
+        return None
+    main_setup = data.get('main', None)
+    interact_setup = data.get('interact', None)
+    comment_setup = data.get('comment', None)
+    comment_replies_setup = data.get('comment_replies', None)
+    follow_setup = data.get('follow', None)
+    like_setup = data.get('like', None)
+    try:
+        session = InstaPy(username=data['auth']['username'], password=data['auth']['password'])
+        session.login()
+    except:
+        print("Should send auth!")
+        return None
+    with  smart_run(session):
+        session.set_user_interact(
+            amount= int(interact_setup.get('amount')) if interact_setup.get('amount',None) is not None else 10,
+            randomize= bool(interact_setup.get('randomize')) if interact_setup.get('randomize',None) is not None else True, 
+            percentage= bool(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
+            ) if interact_setup is not None else None
+
+        session.set_do_follow(
+            enabled= bool(follow_setup.get('enabled')) if follow_setup.get('enabled',None) is not None else False,
+            percentage= bool(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
+            ) if follow_setup is not None else None
+
+        (
+            session.set_comments(comment_setup.get('list')) if comment_setup.get('list', None) is not None else None,
+            session.set_do_comment(
+                enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
+                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
+            )
+        ) if comment_setup is not None else None
+
+        session.set_do_like(
+            enabled= bool(like_setup.get('enabled')) if like_setup.get('enabled',None) is not None else False,
+            percentage= bool(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
+        ) if like_setup is not None else None
+
+        (
+            session.set_comment_replies(comment_replies_setup.get('list')) if comment_replies_setup.get('list', None) is not None else None,
+            session.set_do_reply_to_comments(
+                enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
+                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
+            )
+        )  if comment_replies_setup is not None else None 
+        if main_setup is not None:
+                session.interact_by_users(
+                users, 
+                randomize= bool(main_setup.get('enabled')) if main_setup.get('enabled',None) is not None else True ,
+                amount= int(main_setup.get('amount')) if main_setup.get('amount',None) is not None else 10 ,   
+            )
+        else:
+            session.interact_by_users(
+                users,
+            )
+
 def like_by_tags(body):
     data = json.loads(body)
 

@@ -122,7 +122,7 @@ class InstaPy:
         proxy_password: str = None,
         proxy_address: str = None,
         proxy_port: str = None,
-        disable_image_load: bool = False,
+        disable_image_load: bool = True,
         multi_logs: bool = True,
         log_handler=None,  # TODO function type ?
         geckodriver_path: str = None,
@@ -404,7 +404,7 @@ class InstaPy:
         :return: self
         """
         if self.aborting:
-            return self
+            return None
 
         if selenium_driver:
             self.browser = selenium_driver
@@ -418,7 +418,7 @@ class InstaPy:
         message = "Session started!"
         highlight_print("browser", message, "initialization", "info", logger)
 
-        return self
+        return None
 
     def login(self):
         """Used to login the user either with the username and password"""
@@ -449,7 +449,7 @@ class InstaPy:
             highlight_print(self.username, message, "login", "critical", self.logger)
 
             self.aborting = True
-            return self
+            return None
 
         # back the page_delay to default, or the value set by the user
         self.browser.implicitly_wait(self.page_delay)
@@ -478,11 +478,11 @@ class InstaPy:
             self.browser, self.username, self.logfolder
         )
 
-        return self
+        return None
 
     def set_sleep_reduce(self, percentage: int):
         set_sleep_percentage(percentage)
-        return self
+        return None
 
     def set_action_delays(
         self,
@@ -524,13 +524,13 @@ class InstaPy:
         """
 
         if self.aborting:
-            return self
+            return None
 
         self.do_comment = enabled
         self.do_comment_liked_photo = comment_liked_photo  # Comment a liked photo
         self.comment_percentage = percentage
 
-        return self
+        return None
 
     def set_comments(self, comments: list = [], media: str = None):
         """
@@ -538,7 +538,7 @@ class InstaPy:
         'What an amazing shot :heart_eyes: !' is an example for using emojis.
         """
         if self.aborting:
-            return self
+            return None
 
         if media not in [None, MEDIA_PHOTO, MEDIA_VIDEO]:
             self.logger.warning('Unkown media type! Treating as "any".')
@@ -552,27 +552,27 @@ class InstaPy:
             attr = "{}_comments".format(media.lower())
             setattr(self, attr, comments)
 
-        return self
+        return None
 
     def set_do_follow(self, enabled: bool = False, percentage: int = 0, times: int = 1):
         """Defines if the user of the liked image should be followed"""
         if self.aborting:
-            return self
+            return None
 
         self.follow_times = times
         self.do_follow = enabled
         self.follow_percentage = percentage
 
-        return self
+        return None
 
     def set_do_like(self, enabled: bool = False, percentage: int = 0):
         if self.aborting:
-            return self
+            return None
 
         self.do_like = enabled
         self.like_percentage = min(percentage, 100)
 
-        return self
+        return None
 
     def set_do_story(
         self, enabled: bool = False, percentage: int = 0, simulate: bool = False
@@ -585,20 +585,20 @@ class InstaPy:
                   but nothing will be seen on the browser window
         """
         if self.aborting:
-            return self
+            return None
 
         self.do_story = enabled
         self.story_percentage = min(percentage, 100)
         self.story_simulate = simulate
 
-        return self
+        return None
 
     def set_dont_like(self, tags: list = []):
         """Changes the possible restriction tags, if one of this
         words is in the description, the image won't be liked but user
         still might be unfollowed"""
         if self.aborting:
-            return self
+            return None
 
         if not isinstance(tags, list):
             self.logger.warning("Unable to use your set_dont_like configuration!")
@@ -606,13 +606,13 @@ class InstaPy:
 
         self.dont_like = tags
 
-        return self
+        return None
 
     def set_mandatory_words(self, tags: list = []):
         """Changes the possible restriction tags, if all of this
         hashtags is in the description, the image will be liked"""
         if self.aborting:
-            return self
+            return None
 
         if not isinstance(tags, list):
             self.logger.warning("Unable to use your set_mandatory_words configuration!")
@@ -620,7 +620,7 @@ class InstaPy:
 
         self.mandatory_words = tags
 
-        return self
+        return None
 
     def set_user_interact(
         self,
@@ -631,48 +631,48 @@ class InstaPy:
     ):
         """Define if posts of given user should be interacted"""
         if self.aborting:
-            return self
+            return None
 
         self.user_interact_amount = amount
         self.user_interact_random = randomize
         self.user_interact_percentage = percentage
         self.user_interact_media = media
 
-        return self
+        return None
 
     def set_ignore_users(self, users: list = []):
         """Changes the possible restriction to users, if a user who posts
         is one of these, the image won't be liked"""
         if self.aborting:
-            return self
+            return None
 
         self.ignore_users = users
 
-        return self
+        return None
 
     def set_ignore_if_contains(self, words: list = []):
         """Ignores the don't likes if the description contains
         one of the given words"""
         if self.aborting:
-            return self
+            return None
 
         self.ignore_if_contains = words
 
-        return self
+        return None
 
     def set_dont_include(self, friends: list = None):
         """Defines which accounts should not be unfollowed"""
         if self.aborting:
-            return self
+            return None
 
         self.dont_include = set(friends) or set()
         self.white_list = set(friends) or set()
 
-        return self
+        return None
 
     def set_switch_language(self, option: bool = True):
         self.switch_language = option
-        return self
+        return None
 
     def set_use_clarifai(
         self,
@@ -693,7 +693,7 @@ class InstaPy:
             InstaPyError if os is windows
         """
         if self.aborting:
-            return self
+            return None
 
         # if os.name == 'nt':
         #    raise InstaPyError('Clarifai is not supported on Windows')
@@ -714,7 +714,7 @@ class InstaPy:
         if proxy is not None:
             self.clarifai_proxy = "https://" + proxy
 
-        return self
+        return None
 
     def set_smart_hashtags(
         self,
@@ -775,7 +775,7 @@ class InstaPy:
 
         # delete duplicated tags
         self.smart_hashtags = list(set(self.smart_hashtags))
-        return self
+        return None
 
     def set_smart_location_hashtags(
         self, locations: list, radius: int = 10, limit: int = 3, log_tags: bool = True
@@ -783,7 +783,7 @@ class InstaPy:
         """Generate smart hashtags based on https://apidisplaypurposes.com/map"""
         if locations is None:
             self.logger.error("set_smart_location_hashtags is misconfigured")
-            return self
+            return None
 
         for location in locations:
             lat, lon = get_cord_location(self.browser, location)
@@ -821,7 +821,7 @@ class InstaPy:
                 )
             )
 
-        return self
+        return None
 
     def set_mandatory_language(
         self, enabled: bool = False, character_set: list = ["LATIN"]
@@ -829,7 +829,7 @@ class InstaPy:
         """Restrict the description of the image to a character set"""
 
         if self.aborting:
-            return self
+            return None
 
         char_set = []
 
@@ -861,7 +861,7 @@ class InstaPy:
         self.mandatory_language = enabled
         self.mandatory_character = char_set
 
-        return self
+        return None
 
     def clarifai_check_img_for(
         self,
@@ -872,7 +872,7 @@ class InstaPy:
     ):
         """Defines the tags the images should be checked for"""
         if self.aborting:
-            return self
+            return None
 
         if tags is None and not self.clarifai_img_tags:
             self.use_clarifai = False
@@ -880,7 +880,7 @@ class InstaPy:
             self.clarifai_img_tags.append((tags, comment, comments))
             self.clarifai_img_tags_skip = tags_skip or []
 
-        return self
+        return None
 
     def query_clarifai(self):
         """Method for querying Clarifai using parameters set in
@@ -911,7 +911,7 @@ class InstaPy:
         """Follows users' commenters"""
 
         if self.aborting:
-            return self
+            return None
 
         message = "Starting to follow commenters.."
         highlight_print(self.username, message, "feature", "info", self.logger)
@@ -1017,7 +1017,7 @@ class InstaPy:
             self.logger.info("Commented: {}".format(commented))
             self.logger.info("Inappropriate: {}".format(inap_img))
 
-        return self
+        return None
 
     def follow_likers(
         self,
@@ -1030,7 +1030,7 @@ class InstaPy:
     ):
         """Follows users' likers"""
         if self.aborting:
-            return self
+            return None
 
         message = "Starting to follow likers.."
         highlight_print(self.username, message, "feature", "info", self.logger)
@@ -1142,7 +1142,7 @@ class InstaPy:
             self.logger.info("Commented: {}".format(commented))
             self.logger.info("Inappropriate: {}".format(inap_img))
 
-        return self
+        return None
 
     def follow_by_list(
         self,
@@ -1157,7 +1157,7 @@ class InstaPy:
 
         if self.aborting:
             self.logger.info(">>> self aborting prevented")
-            # return self
+            # return None
 
         # standalone means this feature is started by the user
         standalone = (
@@ -1487,7 +1487,7 @@ class InstaPy:
     ):
         """Likes (default) 50 images per given locations"""
         if self.aborting:
-            return self
+            return None
 
         liked_img = 0
         already_liked = 0
@@ -1702,7 +1702,7 @@ class InstaPy:
         self.inap_img += inap_img
         self.not_valid_users += not_valid_users
 
-        return self
+        return None
 
     def comment_by_locations(
         self,
@@ -1713,7 +1713,7 @@ class InstaPy:
     ):
         """Likes (default) 50 images per given locations"""
         if self.aborting:
-            return self
+            return None
 
         commented = 0
         followed = 0
@@ -1896,7 +1896,7 @@ class InstaPy:
         self.followed += followed
         self.not_valid_users += not_valid_users
 
-        return self
+        return None
 
     def like_by_tags(
         self,
@@ -1912,7 +1912,7 @@ class InstaPy:
     ):
         """Likes (default) 50 images per given tag"""
         if self.aborting:
-            return self
+            return None
 
         liked_img = 0
         already_liked = 0
@@ -2159,7 +2159,7 @@ class InstaPy:
         self.inap_img += inap_img
         self.not_valid_users += not_valid_users
 
-        return self
+        return None
 
     def like_by_users(
         self,
@@ -2170,7 +2170,7 @@ class InstaPy:
     ):
         """Likes some amounts of images for each usernames"""
         if self.aborting:
-            return self
+            return None
 
         if not isinstance(usernames, list):
             usernames = [usernames]
@@ -2413,7 +2413,7 @@ class InstaPy:
         self.inap_img += inap_img
         self.not_valid_users += not_valid_users
 
-        return self
+        return None
 
     def interact_by_users(
         self,
@@ -2424,7 +2424,7 @@ class InstaPy:
     ):
         """Likes some amounts of images for each usernames"""
         if self.aborting:
-            return self
+            return None
 
         message = "Starting to interact by users.."
         highlight_print(self.username, message, "feature", "info", self.logger)
@@ -2744,7 +2744,7 @@ class InstaPy:
         self.inap_img += inap_img
         self.not_valid_users += not_valid_users
 
-        return self
+        return None
 
     def interact_by_users_tagged_posts(
         self,
@@ -2755,7 +2755,7 @@ class InstaPy:
     ):
         """Likes some amounts of tagged images for each usernames"""
         if self.aborting:
-            return self
+            return None
 
         if not isinstance(usernames, list):
             usernames = [usernames]
@@ -3055,12 +3055,12 @@ class InstaPy:
         self.inap_img += inap_img
         self.not_valid_users += not_valid_users
 
-        return self
+        return None
 
     def like_from_image(self, url: str, amount: int = 50, media: str = None):
         """Gets the tags from an image and likes 50 images for each tag"""
         if self.aborting:
-            return self
+            return None
 
         try:
             if not url:
@@ -3075,9 +3075,9 @@ class InstaPy:
         except TypeError as err:
             self.logger.error("Sorry, an error occurred: {}".format(err))
             self.aborting = True
-            return self
+            return None
 
-        return self
+        return None
 
     def interact_user_followers(
         self, usernames: list, amount: int = 10, randomize: bool = False
@@ -3093,21 +3093,21 @@ class InstaPy:
         """
 
         if self.aborting:
-            return self
+            return None
 
         if self.do_follow is not True and self.do_like is not True:
             self.logger.info(
                 "Please enable following or liking in settings in order to "
                 "do interactions."
             )
-            return self
+            return None
 
         elif self.user_interact_amount <= 0:
             self.logger.info(
                 "Please choose an amount higher than zero in "
                 "`set_user_interact` in order to do interactions."
             )
-            return self
+            return None
 
         if not isinstance(usernames, list):
             usernames = [usernames]
@@ -3158,7 +3158,7 @@ class InstaPy:
                 else:
                     self.logger.error("Sorry, an error occurred: {}".format(err))
                     self.aborting = True
-                    return self
+                    return None
 
             print("")
             self.logger.info(
@@ -3235,7 +3235,7 @@ class InstaPy:
                             self.user_interact_media,
                         )
                     if self.aborting:
-                        return self
+                        return None
                     sleep(1)
 
         # final words
@@ -3262,7 +3262,7 @@ class InstaPy:
 
         self.not_valid_users += not_valid_users
 
-        return self
+        return None
 
     def interact_user_likers(
         self,
@@ -3283,21 +3283,21 @@ class InstaPy:
         """
 
         if self.aborting:
-            return self
+            return None
 
         if self.do_follow is not True and self.do_like is not True:
             self.logger.info(
                 "Please enable following or liking in settings in order to "
                 "do interactions."
             )
-            return self
+            return None
 
         elif self.user_interact_amount <= 0:
             self.logger.info(
                 "Please choose an amount higher than zero in "
                 "`set_user_interact` in order to do interactions."
             )
-            return self
+            return None
 
         if not isinstance(usernames, list):
             usernames = [usernames]
@@ -3347,7 +3347,7 @@ class InstaPy:
                 else:
                     self.logger.error("Sorry, an error occurred: {}".format(err))
                     self.aborting = True
-                    return self
+                    return None
 
             print("")
             self.logger.info(
@@ -3427,7 +3427,7 @@ class InstaPy:
                                 self.user_interact_media,
                             )
                         if self.aborting:
-                            return self
+                            return None
                         sleep(1)
 
         # final words
@@ -3454,28 +3454,28 @@ class InstaPy:
 
         self.not_valid_users += not_valid_users
 
-        return self
+        return None
 
     def interact_user_following(
         self, usernames: list, amount: int = 10, randomize: bool = False
     ):
 
         if self.aborting:
-            return self
+            return None
 
         if self.do_follow is not True and self.do_like is not True:
             self.logger.info(
                 "Please enable following or liking in settings"
                 " in order to do interactions."
             )
-            return self
+            return None
 
         elif self.user_interact_amount <= 0:
             self.logger.info(
                 "Please choose an amount higher than zero in"
                 " `set_user_interact` in order to do interactions."
             )
-            return self
+            return None
 
         if not isinstance(usernames, list):
             usernames = [usernames]
@@ -3526,7 +3526,7 @@ class InstaPy:
                 else:
                     self.logger.error("Sorry, an error occurred: {}".format(err))
                     self.aborting = True
-                    return self
+                    return None
 
             print("")
             self.logger.info(
@@ -3605,7 +3605,7 @@ class InstaPy:
                             self.user_interact_media,
                         )
                     if self.aborting:
-                        return self
+                        return None
                     sleep(1)
 
         # final words
@@ -3631,7 +3631,7 @@ class InstaPy:
 
         self.not_valid_users += not_valid_users
 
-        return self
+        return None
 
     def follow_user_followers(
         self,
@@ -3643,7 +3643,7 @@ class InstaPy:
     ):
         """Follow the `Followers` of given users"""
         if self.aborting:
-            return self
+            return None
 
         message = "Starting to follow user `Followers`.."
         highlight_print(self.username, message, "feature", "info", self.logger)
@@ -3701,7 +3701,7 @@ class InstaPy:
                 else:
                     self.logger.error("Sorry, an error occurred: {}".format(err))
                     self.aborting = True
-                    return self
+                    return None
 
             print("")
             self.logger.info(
@@ -3819,7 +3819,7 @@ class InstaPy:
 
         self.not_valid_users += not_valid_users
 
-        return self
+        return None
 
     def follow_user_following(
         self,
@@ -3831,7 +3831,7 @@ class InstaPy:
     ):
         """Follow the `Following` of given users"""
         if self.aborting:
-            return self
+            return None
 
         message = "Starting to follow user `Following`.."
         highlight_print(self.username, message, "feature", "info", self.logger)
@@ -3887,7 +3887,7 @@ class InstaPy:
                 else:
                     self.logger.error("Sorry, an error occurred: {}".format(err))
                     self.aborting = True
-                    return self
+                    return None
 
             print("")
             self.logger.info(
@@ -4005,7 +4005,7 @@ class InstaPy:
 
         self.not_valid_users += not_valid_users
 
-        return self
+        return None
 
     def unfollow_users(
         self,
@@ -4025,7 +4025,7 @@ class InstaPy:
         """Unfollows (default) 10 users from your following list"""
 
         if self.aborting:
-            return self
+            return None
 
         message = "Starting to unfollow users.."
         highlight_print(self.username, message, "feature", "info", self.logger)
@@ -4072,20 +4072,20 @@ class InstaPy:
         except Exception as exc:
             if isinstance(exc, RuntimeWarning):
                 self.logger.warning("Warning: {} , stopping unfollow_users".format(exc))
-                return self
+                return None
 
             else:
                 self.logger.error("Sorry, an error occurred: {}".format(exc))
                 self.aborting = True
-                return self
+                return None
 
-        return self
+        return None
 
     def remove_follow_requests(self, amount: int = 200, sleep_delay: int = 600):
         """Remove user unaccepted follow requests"""
 
         if self.aborting:
-            return self
+            return None
 
         message = "Starting to get follow requests.."
         highlight_print(self.username, message, "feature", "info", self.logger)
@@ -4120,7 +4120,7 @@ class InstaPy:
                 unfollow_count += 1
                 self.unfollowed += 1
 
-        return self
+        return None
 
     def like_by_feed(self, amount, randomize, unfollow, interact):
         """
@@ -4133,12 +4133,12 @@ class InstaPy:
         """
 
         if self.aborting:
-            return self
+            return None
 
         for _ in self.like_by_feed_generator(amount, randomize, unfollow, interact):
             pass
 
-        return self
+        return None
 
     def like_by_feed_generator(
         self,
@@ -4522,11 +4522,11 @@ class InstaPy:
                 "Please provide a username to grab `Followers` data"
                 "  ~e.g. your own username or somebody else's"
             )
-            return self
+            return None
 
         elif amount is None:
             self.logger.warning("Please put amount to grab `Followers` data")
-            return self
+            return None
 
         elif amount != "full" and (
             type(amount) != int or ((type(amount) == int and amount <= 0))
@@ -4535,7 +4535,7 @@ class InstaPy:
                 "Please provide a valid amount bigger than"
                 " zero (0) to grab `Followers` data"
             )
-            return self
+            return None
 
         # Get `followers` data
         grabbed_followers = get_followers(
@@ -4572,11 +4572,11 @@ class InstaPy:
                 "Please provide a username to grab `Following` data"
                 "  ~e.g. your own username or somebody else's"
             )
-            return self
+            return None
 
         elif amount is None:
             self.logger.warning("Please put amount to grab `Following` data")
-            return self
+            return None
 
         elif amount != "full" and (
             type(amount) != int or ((type(amount) == int and amount <= 0))
@@ -4585,7 +4585,7 @@ class InstaPy:
                 "Please provide a valid amount bigger than"
                 " zero (0) to grab `Following` data"
             )
-            return self
+            return None
 
         # get `following` data
         grabbed_following = get_following(
@@ -4743,7 +4743,7 @@ class InstaPy:
         skip_top_posts: bool = True,
     ):
         if self.aborting:
-            return self
+            return None
 
         inap_img = 0
         followed = 0
@@ -4844,7 +4844,7 @@ class InstaPy:
         self.inap_img += inap_img
         self.not_valid_users += not_valid_users
 
-        return self
+        return None
 
     def follow_by_tags(
         self,
@@ -4859,7 +4859,7 @@ class InstaPy:
     ):
 
         if self.aborting:
-            return self
+            return None
 
         inap_img = 0
         followed = 0
@@ -4996,7 +4996,7 @@ class InstaPy:
         self.inap_img += inap_img
         self.not_valid_users += not_valid_users
 
-        return self
+        return None
 
     def interact_by_URL(
         self, urls: list = [], randomize: bool = False, interact: bool = False
@@ -5004,7 +5004,7 @@ class InstaPy:
         """Interact on posts at given URLs"""
 
         if self.aborting:
-            return self
+            return None
 
         message = "Starting to interact by given URLs.."
         highlight_print(self.username, message, "feature", "info", self.logger)
@@ -5209,7 +5209,7 @@ class InstaPy:
         self.inap_img += inap_img
         self.not_valid_users += not_valid_users
 
-        return self
+        return None
 
     def set_quota_supervisor(
         self,
@@ -5373,7 +5373,7 @@ class InstaPy:
         self.do_reply_to_comments = enabled
         self.reply_to_comments_percent = percentage
 
-        return self
+        return None
 
     def set_comment_replies(self, replies: list = [], media: str = None):
         """Set the replies to comments"""
@@ -5384,7 +5384,7 @@ class InstaPy:
             self.photo_comment_replies = None
             self.video_comment_replies = None
 
-            return self
+            return None
 
         if media in [MEDIA_PHOTO, MEDIA_VIDEO]:
             attr = "{}_comment_replies".format(media.lower())
@@ -5488,7 +5488,7 @@ class InstaPy:
         and also interact with those commenters
         """
         if self.aborting:
-            return self
+            return None
         message = "Starting to interact by comments.."
         highlight_print(self.username, message, "feature", "info", self.logger)
 
@@ -5850,11 +5850,11 @@ class InstaPy:
 
     def is_mandatory_character(self, uchr):
         if self.aborting:
-            return self
+            return None
         try:
-            return self.check_letters[uchr]
+            return None.check_letters[uchr]
         except KeyError:
-            return self.check_letters.setdefault(
+            return None.check_letters.setdefault(
                 uchr,
                 any(
                     mandatory_char in unicodedata.name(uchr)
@@ -5874,7 +5874,7 @@ class InstaPy:
     def check_character_set(self, unistr):
         self.check_letters = {}
         if self.aborting:
-            return self
+            return None
         return all(
             self.is_mandatory_character(uchr) for uchr in unistr if uchr.isalpha()
         )
@@ -5883,7 +5883,7 @@ class InstaPy:
         """Accept pending follow requests from activity feed"""
 
         if self.aborting:
-            return self
+            return None
 
         message = "Starting to get follow requests.."
         highlight_print(self.username, message, "feature", "info", self.logger)
@@ -5917,7 +5917,7 @@ class InstaPy:
 
         self.logger.info("Accepted {} follow requests".format(accepted))
 
-        return self
+        return None
 
     def join_pods(self, topic: str = "general", engagement_mode: str = "normal"):
         """Join pods"""
@@ -5927,7 +5927,7 @@ class InstaPy:
                     self.allowed_pod_topics
                 )
             )
-            return self
+            return None
 
         if engagement_mode not in self.allowed_pod_engagement_modes:
             self.logger.error(
@@ -5935,13 +5935,13 @@ class InstaPy:
                     self.allowed_pod_engagement_modes
                 )
             )
-            return self
+            return None
 
         if self.comments is not None and len(self.comments) < 10:
             self.logger.error(
                 "You have too few comments, please set at least 10 distinct comments to avoid looking suspicious."
             )
-            return self
+            return None
 
         user_link = "https://www.instagram.com/{}/".format(self.username)
         web_address_navigator(self.browser, user_link)
@@ -6035,7 +6035,7 @@ class InstaPy:
         except Exception as err:
             self.logger.error(err)
 
-        return self
+        return None
 
     def engage_with_posts(self, pod_posts, modespecific_comment_percentage):
         for pod_post in pod_posts:
@@ -6118,7 +6118,7 @@ class InstaPy:
     def story_by_tags(self, tags: list = None):
         """Watch stories for specific tag(s)"""
         if self.aborting:
-            return self
+            return None
 
         if tags is None:
             self.logger.info("No Tags set")
@@ -6150,7 +6150,7 @@ class InstaPy:
     def story_by_users(self, users: list = None):
         """Watch stories for specific user(s)"""
         if self.aborting:
-            return self
+            return None
 
         if users is None:
             self.logger.info("No users passed to story_by_users")
@@ -6207,7 +6207,7 @@ class InstaPy:
             and also interact with those commenters
             """
             if self.aborting:
-                return self
+                return None
             message = "Starting to interact by comments.."
             highlight_print(self.username, message, "feature", "info", self.logger)
 
