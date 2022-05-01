@@ -32,32 +32,32 @@ def interact_by_comments(body):
         session.set_user_interact(
             amount= int(interact_setup.get('amount')) if interact_setup.get('amount',None) is not None else 10,
             randomize= bool(interact_setup.get('randomize')) if interact_setup.get('randomize',None) is not None else True, 
-            percentage= bool(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
+            percentage= int(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
             ) if interact_setup is not None else None
 
         session.set_do_follow(
             enabled= bool(follow_setup.get('enabled')) if follow_setup.get('enabled',None) is not None else False,
-            percentage= bool(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
+            percentage= int(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
             ) if follow_setup is not None else None
 
         (
             session.set_comments(comment_setup.get('list')) if comment_setup.get('list', None) is not None else None,
             session.set_do_comment(
                 enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
-                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
+                percentage= int(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
             )
         ) if comment_setup is not None else None
 
         session.set_do_like(
             enabled= bool(like_setup.get('enabled')) if like_setup.get('enabled',None) is not None else False,
-            percentage= bool(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
+            percentage= int(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
         ) if like_setup is not None else None
 
         (
             session.set_comment_replies(comment_replies_setup.get('list')) if comment_replies_setup.get('list', None) is not None else None,
             session.set_do_reply_to_comments(
                 enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
-                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
+                percentage= int(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
             )
         )  if comment_replies_setup is not None else None 
         if main_setup is not None:
@@ -99,32 +99,32 @@ def interact_user_followers(body):
         session.set_user_interact(
             amount= int(interact_setup.get('amount')) if interact_setup.get('amount',None) is not None else 10,
             randomize= bool(interact_setup.get('randomize')) if interact_setup.get('randomize',None) is not None else True, 
-            percentage= bool(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
+            percentage= int(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
             ) if interact_setup is not None else None
 
         session.set_do_follow(
             enabled= bool(follow_setup.get('enabled')) if follow_setup.get('enabled',None) is not None else False,
-            percentage= bool(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
+            percentage= int(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
             ) if follow_setup is not None else None
 
         (
             session.set_comments(comment_setup.get('list')) if comment_setup.get('list', None) is not None else None,
             session.set_do_comment(
                 enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
-                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
+                percentage= int(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
             )
         ) if comment_setup is not None else None
 
         session.set_do_like(
             enabled= bool(like_setup.get('enabled')) if like_setup.get('enabled',None) is not None else False,
-            percentage= bool(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
+            percentage= int(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
         ) if like_setup is not None else None
 
         (
             session.set_comment_replies(comment_replies_setup.get('list')) if comment_replies_setup.get('list', None) is not None else None,
             session.set_do_reply_to_comments(
                 enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
-                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
+                percentage= int(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
             )
         )  if comment_replies_setup is not None else None 
         if main_setup is not None:
@@ -164,32 +164,32 @@ def interact_user_likers(body):
         session.set_user_interact(
             amount= int(interact_setup.get('amount')) if interact_setup.get('amount',None) is not None else 10,
             randomize= bool(interact_setup.get('randomize')) if interact_setup.get('randomize',None) is not None else True, 
-            percentage= bool(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
+            percentage= int(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
             ) if interact_setup is not None else None
 
         session.set_do_follow(
             enabled= bool(follow_setup.get('enabled')) if follow_setup.get('enabled',None) is not None else False,
-            percentage= bool(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
+            percentage= int(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
             ) if follow_setup is not None else None
 
         (
             session.set_comments(comment_setup.get('list')) if comment_setup.get('list', None) is not None else None,
             session.set_do_comment(
                 enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
-                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
+                percentage= int(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
             )
         ) if comment_setup is not None else None
 
         session.set_do_like(
             enabled= bool(like_setup.get('enabled')) if like_setup.get('enabled',None) is not None else False,
-            percentage= bool(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
+            percentage= int(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
         ) if like_setup is not None else None
 
         (
             session.set_comment_replies(comment_replies_setup.get('list')) if comment_replies_setup.get('list', None) is not None else None,
             session.set_do_reply_to_comments(
                 enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
-                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
+                percentage= int(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
             )
         )  if comment_replies_setup is not None else None 
         if main_setup is not None:
@@ -229,32 +229,32 @@ def interact_user_following(body):
         session.set_user_interact(
             amount= int(interact_setup.get('amount')) if interact_setup.get('amount',None) is not None else 10,
             randomize= bool(interact_setup.get('randomize')) if interact_setup.get('randomize',None) is not None else True, 
-            percentage= bool(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
+            percentage= int(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
             ) if interact_setup is not None else None
 
         session.set_do_follow(
             enabled= bool(follow_setup.get('enabled')) if follow_setup.get('enabled',None) is not None else False,
-            percentage= bool(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
+            percentage= int(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
             ) if follow_setup is not None else None
 
         (
             session.set_comments(comment_setup.get('list')) if comment_setup.get('list', None) is not None else None,
             session.set_do_comment(
                 enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
-                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
+                percentage= int(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
             )
         ) if comment_setup is not None else None
 
         session.set_do_like(
             enabled= bool(like_setup.get('enabled')) if like_setup.get('enabled',None) is not None else False,
-            percentage= bool(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
+            percentage= int(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
         ) if like_setup is not None else None
 
         (
             session.set_comment_replies(comment_replies_setup.get('list')) if comment_replies_setup.get('list', None) is not None else None,
             session.set_do_reply_to_comments(
                 enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
-                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
+                percentage= int(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
             )
         )  if comment_replies_setup is not None else None 
         if main_setup is not None:
@@ -293,32 +293,32 @@ def interact_by_users(body):
         session.set_user_interact(
             amount= int(interact_setup.get('amount')) if interact_setup.get('amount',None) is not None else 10,
             randomize= bool(interact_setup.get('randomize')) if interact_setup.get('randomize',None) is not None else True, 
-            percentage= bool(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
+            percentage= int(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
             ) if interact_setup is not None else None
 
         session.set_do_follow(
             enabled= bool(follow_setup.get('enabled')) if follow_setup.get('enabled',None) is not None else False,
-            percentage= bool(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
+            percentage= int(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
             ) if follow_setup is not None else None
 
         (
             session.set_comments(comment_setup.get('list')) if comment_setup.get('list', None) is not None else None,
             session.set_do_comment(
                 enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
-                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
+                percentage= int(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
             )
         ) if comment_setup is not None else None
 
         session.set_do_like(
             enabled= bool(like_setup.get('enabled')) if like_setup.get('enabled',None) is not None else False,
-            percentage= bool(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
+            percentage= int(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
         ) if like_setup is not None else None
 
         (
             session.set_comment_replies(comment_replies_setup.get('list')) if comment_replies_setup.get('list', None) is not None else None,
             session.set_do_reply_to_comments(
                 enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
-                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
+                percentage= int(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
             )
         )  if comment_replies_setup is not None else None 
         if main_setup is not None:
@@ -353,32 +353,32 @@ def like_by_tags(body):
         session.set_user_interact(
             amount= int(interact_setup.get('amount')) if interact_setup.get('amount',None) is not None else 10,
             randomize= bool(interact_setup.get('randomize')) if interact_setup.get('randomize',None) is not None else True, 
-            percentage= bool(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
+            percentage= int(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
             ) if interact_setup is not None else None
 
         session.set_do_follow(
             enabled= bool(follow_setup.get('enabled')) if follow_setup.get('enabled',None) is not None else False,
-            percentage= bool(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
+            percentage= int(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
             ) if follow_setup is not None else None
 
         (
             session.set_comments(comment_setup.get('list')) if comment_setup.get('list', None) is not None else None,
             session.set_do_comment(
                 enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
-                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
+                percentage= int(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
             )
         ) if comment_setup is not None else None
 
         session.set_do_like(
             enabled= bool(like_setup.get('enabled')) if like_setup.get('enabled',None) is not None else False,
-            percentage= bool(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
+            percentage= int(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
         ) if like_setup is not None else None
 
         (
             session.set_comment_replies(comment_replies_setup.get('list')) if comment_replies_setup.get('list', None) is not None else None,
             session.set_do_reply_to_comments(
                 enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
-                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
+                percentage= int(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
             )
         )  if comment_replies_setup is not None else None 
 
@@ -419,32 +419,32 @@ def like_by_locations(body):
         session.set_user_interact(
             amount= int(interact_setup.get('amount')) if interact_setup.get('amount',None) is not None else 10,
             randomize= bool(interact_setup.get('randomize')) if interact_setup.get('randomize',None) is not None else True, 
-            percentage= bool(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
+            percentage= int(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
             ) if interact_setup is not None else None
 
         session.set_do_follow(
             enabled= bool(follow_setup.get('enabled')) if follow_setup.get('enabled',None) is not None else False,
-            percentage= bool(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
+            percentage= int(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
             ) if follow_setup is not None else None
 
         (
             session.set_comments(comment_setup.get('list')) if comment_setup.get('list', None) is not None else None,
             session.set_do_comment(
                 enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
-                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
+                percentage= int(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
             )
         ) if comment_setup is not None else None
 
         session.set_do_like(
             enabled= bool(like_setup.get('enabled')) if like_setup.get('enabled',None) is not None else False,
-            percentage= bool(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
+            percentage= int(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
         ) if like_setup is not None else None
 
         (
             session.set_comment_replies(comment_replies_setup.get('list')) if comment_replies_setup.get('list', None) is not None else None,
             session.set_do_reply_to_comments(
                 enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
-                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
+                percentage= int(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
             )
         )  if comment_replies_setup is not None else None 
 
@@ -480,32 +480,32 @@ def like_by_feed(body):
         session.set_user_interact(
             amount= int(interact_setup.get('amount')) if interact_setup.get('amount',None) is not None else 10,
             randomize= bool(interact_setup.get('randomize')) if interact_setup.get('randomize',None) is not None else True, 
-            percentage= bool(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
+            percentage= int(interact_setup.get('percentage')) if interact_setup.get('percentage',None) is not None else 100,
             ) if interact_setup is not None else None
 
         session.set_do_follow(
             enabled= bool(follow_setup.get('enabled')) if follow_setup.get('enabled',None) is not None else False,
-            percentage= bool(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
+            percentage= int(follow_setup.get('percentage')) if follow_setup.get('percentage',None) is not None else 100,
             ) if follow_setup is not None else None
 
         (
             session.set_comments(comment_setup.get('list')) if comment_setup.get('list', None) is not None else None,
             session.set_do_comment(
                 enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
-                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
+                percentage= int(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 50,
             )
         ) if comment_setup is not None else None
 
         session.set_do_like(
             enabled= bool(like_setup.get('enabled')) if like_setup.get('enabled',None) is not None else False,
-            percentage= bool(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
+            percentage= int(like_setup.get('percentage')) if like_setup.get('percentage',None) is not None else 100,
         ) if like_setup is not None else None
 
         (
             session.set_comment_replies(comment_replies_setup.get('list')) if comment_replies_setup.get('list', None) is not None else None,
             session.set_do_reply_to_comments(
                 enabled= bool(comment_setup.get('enabled')) if comment_setup.get('enabled',None) is not None else False,
-                percentage= bool(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
+                percentage= int(comment_setup.get('percentage')) if comment_setup.get('percentage',None) is not None else 20,
             )
         )  if comment_replies_setup is not None else None 
 
