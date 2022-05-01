@@ -32,7 +32,7 @@ class LikeSetupSerialaizer(serializers.Serializer):
     percentage = serializers.IntegerField()
 class BaseSerialaizer(serializers.Serializer):
     accounts = serializers.ListField()
-    intract_setup = IntractSetupSerialaizer()
+    interact_setup = IntractSetupSerialaizer()
     comment_setup = CommentSetupSerialaizer()
     comment_replies_setup = CommentReplySetupSerialaizer()
     follow_setup = FollowSetupSerialaizer()
