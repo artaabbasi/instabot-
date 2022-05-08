@@ -409,8 +409,8 @@ def auto_intract(request):
     # main_setup = {'main':data.get('main_setup', None)}
 
     auth = {
-        "username": get_object_or_404(models.InstagramAccounts).username,
-        "password": get_object_or_404(models.InstagramAccounts).password,
+        "username": get_object_or_404(models.InstagramAccounts, pk=account).username,
+        "password": get_object_or_404(models.InstagramAccounts, pk=account).password,
     }
     value = {
         "users":users,
