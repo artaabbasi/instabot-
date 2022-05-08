@@ -291,6 +291,9 @@ class StoryAdmin(admin.ModelAdmin):
     actions = [publish_story]
 
 admin.site.register(InstagramAccounts)
+admin.site.register(ForIntractUsers)
+admin.site.register(Comments)
+
 admin.site.register(createstory, StoryAdmin)
 admin.site.register(createpost, PostAdmin)
 

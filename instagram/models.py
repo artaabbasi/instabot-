@@ -19,3 +19,9 @@ class createpost(models.Model):
     photoup = models.ImageField()
     photobut = models.ImageField()
     caption = models.TextField(null=True)
+
+class ForIntractUsers(models.Model):
+    username = models.CharField(max_length=100)
+
+class Comments(models.Model):
+    text = models.CharField(max_length=100)

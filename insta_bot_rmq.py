@@ -386,7 +386,7 @@ def like_by_tags(body):
         if main_setup is not None:
                 session.like_by_tags(
                 tags = main_setup.get('tags') if main_setup.get('tags',None) is not None else [], 
-                use_random_tags= main_setup.get('use_random_tags') if main_setup.get('use_random_tags',None) is not None else False ,
+                use_random_tags= bool(main_setup.get('use_random_tags')) if main_setup.get('use_random_tags',None) is not None else False ,
                 amount= int(main_setup.get('amount')) if main_setup.get('amount',None) is not None else 20 ,   
                 skip_top_posts = bool(main_setup.get('skip_top_posts')) if main_setup.get('skip_top_posts',None) is not None else True,
                 use_smart_hashtags = bool(main_setup.get('use_smart_hashtags')) if main_setup.get('use_smart_hashtags',None) is not None else False,
