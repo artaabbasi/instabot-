@@ -29,9 +29,9 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-async def open_rmq():
-    result = os.system('insta_bot_rmq.py')
-    print(result)
+# async def open_rmq():
+#     result = os.system('insta_bot_rmq.py')
+#     print(result)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
