@@ -539,7 +539,7 @@ def sendstory(body):
             try:
                 with open(jpg_to_, "r") as f:
                     print("founded!")
-                    os.system(f'java -jar MadtalkRobot.jar {username} {password} {jpg_to_}')
+                    os.system(f'java -jar instagram.jar {username} {password} {jpg_to_}')
                     time.sleep(random.randint(5,20))
             except:
                 print("not found!")
@@ -566,7 +566,7 @@ def sendpost(body):
         try:
             with open(jpg_to_, "r") as f:
                 print("founded!")
-                os.system(f'java -jar MadtalkRobot.jar {username} {password} {jpg_to_} "{data.get("caption", "Hi")}"')
+                os.system(f'java -jar instagram.jar {username} {password} {jpg_to_} "{data.get("caption", "Hi")}"')
         except:
             print("not found!")
     except:

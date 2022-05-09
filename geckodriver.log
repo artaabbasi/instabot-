@@ -2410,3 +2410,22 @@ console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message f
 Exiting due to channel error.
 Exiting due to channel error.
 Exiting due to channel error.
+1652079016473	geckodriver	INFO	Listening on 127.0.0.1:49363
+1652079016994	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "46603" "-no-remote" "-profile" "/tmp/rust_mozprofileNBUAl5"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1652079018883	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileNBUAl5/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:46603/devtools/browser/8a8cbff0-ec17-4cdb-8285-8e9bfa537c70
+1652079020830	Marionette	INFO	Listening on port 34023
+Read port: 34023
+1652079020915	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: , line 0: uncaught exception: undefined
+1652079036098	Marionette	INFO	Stopped listening on port 34023
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+
+###!!! [Parent][PImageBridgeParent] Error: RunMessage(msgname=PImageBridge::Msg_WillClose) Channel closing: too late to send/recv, messages will be lost
+
+1652079037131	geckodriver::marionette	ERROR	Failed to close browser connection: Transport endpoint is not connected (os error 107)
