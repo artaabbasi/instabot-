@@ -520,11 +520,11 @@ def like_by_feed(body):
             pass
 
 async def sendstorybot(username, password, jpg_to_):
-    os.system(f'java -jar instagram.jar {username} {password} {jpg_to_}')
-    print("story done")
+    await os.system(f'java -jar instagram.jar {username} {password} {jpg_to_}')
+    await print("story done")
 async def sendpostbot(username, password, jpg_to_, caption):
-    os.system(f'java -jar instagram.jar {username} {password} {jpg_to_} {caption}')
-    print("post done")
+    await os.system(f'java -jar instagram.jar {username} {password} {jpg_to_} {caption}')
+    await print("post done")
 def sendstory(body):
     data = json.loads(body)
 
