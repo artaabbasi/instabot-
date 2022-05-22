@@ -586,6 +586,7 @@ def login(body):
     except:
         print("Should send auth!")
         return None
+    session.end()
     return None
 
 
