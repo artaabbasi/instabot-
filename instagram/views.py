@@ -457,8 +457,8 @@ def auto_intract(request):
     return response.Response({"messages":"done.."})
 
 
-@swagger_auto_schema(methods = ['get',],tags=['instagram'])
-@decorators.api_view(['GET'])
+@swagger_auto_schema(methods = ['post',],tags=['instagram'], request_body=serialaizers.AccountSerialaizer)
+@decorators.api_view(['POST'])
 def login(request):
     data = request.data
     connection = pika.BlockingConnection(
