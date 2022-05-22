@@ -457,7 +457,7 @@ def auto_intract(request):
     return response.Response({"messages":"done.."})
 
 
-@swagger_auto_schema(methods = ['post',],tags=['instagram'], request_body=serialaizers.AccountSerialaizer)
+@swagger_auto_schema(methods = ['post',],tags=['instagram'], request_body=serialaizers.SendStorySerializer)
 @decorators.api_view(['POST'])
 def login(request):
     data = request.data
