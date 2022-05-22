@@ -578,6 +578,15 @@ def sendpost(body):
         print("Should send media!")
     return None
 
+def login(body):
+    data = json.loads(body)
+    try:
+        session = InstaPy(username=data['auth']['username'], password=data['auth']['password'], disable_image_load=False)
+        session.login()
+    except:
+        print("Should send auth!")
+        return None
+    return None
 
 
 

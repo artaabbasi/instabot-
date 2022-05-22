@@ -455,3 +455,30 @@ def auto_intract(request):
     channel.basic_publish(exchange='', routing_key='insta', body=value, properties=pika.BasicProperties(headers=hdr))
     connection.close()
     return response.Response({"messages":"done.."})
+
+
+@swagger_auto_schema(methods = ['get',],tags=['instagram'])
+@decorators.api_view(['GET'])
+def login(request):
+    data = request.data
+    connection = pika.BlockingConnection(
+    pika.ConnectionParameters(host='localhost'))
+    channel = connection.channel()
+    channel.queue_declare(queue='insta')
+    accounts = models.InstagramAccounts.objects.filter(pk__in=data.get('accounts'))
+    # users = data.get('users', None)
+
+    for account in accounts:
+        auth = {
+            "username": account.username,
+            "password": account.password,
+        }
+        value = {
+            # "users":users,
+            "auth": auth,
+        }
+        value  = json.dumps(value)
+        hdr ={"task":"login"}
+        channel.basic_publish(exchange='', routing_key='insta', body=value, properties=pika.BasicProperties(headers=hdr))
+    connection.close()
+    return response.Response({"messages":"done.."})
